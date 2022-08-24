@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase.utils';
+import { useNavigate } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
 import './sign-in-form.styles.scss';
 
-import Button from '../button/button.component';
-import '../button/button.styles.scss';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+// import '../button/button.styles.scss';
 
 const defaultFormFields = {
   email: '',
@@ -30,17 +30,15 @@ const SignInForm = () => {
     await signInWithGooglePopup();
     //setCurrentUser(user);
   };
-
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
       //setCurrentUser(user);
       resetFormFields();
+      navigate('/shop');
     } catch (error) {
       switch (error.code) {
         case 'auth/wrong-password':
@@ -85,7 +83,7 @@ const SignInForm = () => {
           <Button type="submit">Sign in</Button>
           <Button
             type="button"
-            buttonType={'google'}
+            buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogle}
           >
             Google Sign In
