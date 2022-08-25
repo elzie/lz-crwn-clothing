@@ -1,3 +1,3 @@
-Temporary Demo site: https://crwn-clothing-db-2221e.web.app/
+Netlify hosted demo site: https://brilliant-squirrel-e5b7d0.netlify.app/
 
-Project will be uploaded to Netlify as the course progresses.
+Firebase Demo site: https://crwn-clothing-db-2221e.web.app/
