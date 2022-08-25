@@ -6,7 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
-import './sign-in-form.styles.scss';
+import { SignUpContainer, ButtonsContainer } from './sign-in-form.styles';
 
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 // import '../button/button.styles.scss';
@@ -59,7 +59,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with ur email n password</span>
       <form onSubmit={handleSubmit}>
@@ -79,7 +79,7 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign in</Button>
           <Button
             type="button"
@@ -88,9 +88,9 @@ const SignInForm = () => {
           >
             Google Sign In
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 
